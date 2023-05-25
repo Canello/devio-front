@@ -1,5 +1,5 @@
 import { KitchenStyled } from "./Kitchen.styles";
 
 export const Kitchen = () => {
-    return <KitchenStyled></KitchenStyled>;
+    return <KitchenStyled className="page"></KitchenStyled>;
 };

@@ -3,16 +3,17 @@ import "./App.css";
 import { Navbar } from "./routes/Navbar/Navbar.component";
 import { Orders } from "./routes/Orders/Orders.component";
 import { Kitchen } from "./routes/Kitchen/Kitchen.component";
-import { Pickups } from "./routes/Pickups/Pickups.component";
+import { Pickup } from "./routes/Pickup/Pickup.component";
+import { PATHS } from "./utils/constants";
 
 function App() {
     return (
         <div className="App">
             <Routes>
                 <Route path="/" element={<Navbar />}>
-                    <Route index element={<Orders />} />
-                    <Route path="/cozinha" element={<Kitchen />} />
-                    <Route path="/retirada" element={<Pickups />} />
+                    <Route index path={PATHS.orders} element={<Orders />} />
+                    <Route path={PATHS.kitchen} element={<Kitchen />} />
+                    <Route path={PATHS.pickup} element={<Pickup />} />
                 </Route>
             </Routes>
         </div>
