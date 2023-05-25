@@ -9,6 +9,7 @@ export const NavbarStyled = styled.div`
     width: 100vw;
     padding: 8px 32px;
     background-color: var(--green-2);
+    z-index: 99;
 
     @media screen and (max-width: 576px) {
         justify-content: center;

@@ -3,3 +3,10 @@ export const PATHS = {
     kitchen: "/cozinha",
     pickup: "/retirada",
 };
+
+export const CATEGORIES = {
+    combos: "combos",
+    sideDishes: "side_dishes",
+    drinks: "drinks",
+    desserts: "desserts",
+};
