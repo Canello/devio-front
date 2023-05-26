@@ -2,6 +2,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
     LogoText,
     NavbarStyled,
+    NavbarWrapper,
     NavigationLink,
     NavigationLinksContainer,
 } from "./Navbar.styles";
@@ -25,27 +26,29 @@ export const Navbar = () => {
     return (
         <>
             <NavbarStyled>
-                <LogoText onClick={goTo.orders}>fastfood</LogoText>
-                <NavigationLinksContainer>
-                    <NavigationLink
-                        isActive={currentRoute.isOrders}
-                        onClick={goTo.orders}
-                    >
-                        Pedidos
-                    </NavigationLink>
-                    <NavigationLink
-                        isActive={currentRoute.isKitchen}
-                        onClick={goTo.kitchen}
-                    >
-                        Cozinha
-                    </NavigationLink>
-                    <NavigationLink
-                        isActive={currentRoute.isPickups}
-                        onClick={goTo.pickup}
-                    >
-                        Retirada
-                    </NavigationLink>
-                </NavigationLinksContainer>
+                <NavbarWrapper>
+                    <LogoText onClick={goTo.orders}>fastfood</LogoText>
+                    <NavigationLinksContainer>
+                        <NavigationLink
+                            isActive={currentRoute.isOrders}
+                            onClick={goTo.orders}
+                        >
+                            Pedidos
+                        </NavigationLink>
+                        <NavigationLink
+                            isActive={currentRoute.isKitchen}
+                            onClick={goTo.kitchen}
+                        >
+                            Cozinha
+                        </NavigationLink>
+                        <NavigationLink
+                            isActive={currentRoute.isPickups}
+                            onClick={goTo.pickup}
+                        >
+                            Retirada
+                        </NavigationLink>
+                    </NavigationLinksContainer>
+                </NavbarWrapper>
             </NavbarStyled>
             <Outlet />
         </>

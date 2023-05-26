@@ -3,17 +3,29 @@ import styled from "styled-components";
 export const NavbarStyled = styled.div`
     position: fixed;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: var(--navbar-height);
     width: 100vw;
-    padding: 8px 32px;
     background-color: var(--green-2);
     z-index: 99;
 
     @media screen and (max-width: 576px) {
-        justify-content: center;
         bottom: 0;
+    }
+`;
+
+export const NavbarWrapper = styled.div`
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: calc(var(--page-max-width));
+    padding: 8px 32px;
+
+    @media screen and (max-width: 576px) {
+        justify-content: center;
     }
 `;
 

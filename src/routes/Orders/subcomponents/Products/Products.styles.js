@@ -35,7 +35,7 @@ export const EmptyPlaceholderImage = styled.img`
 
 export const EmptyPlaceholderText = styled.span`
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
     color: var(--neutral-5);
     text-align: center;
 `;

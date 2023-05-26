@@ -95,6 +95,9 @@ button {
 
     /* Navbar height */
     --navbar-height: 44px;
+
+    /* Page maximum width */
+    --page-max-width: 1400px;
 }
 
 /* ---------------------- */
@@ -104,6 +107,8 @@ button {
 /* Desktop */
 .page {
     padding: calc(48px + var(--navbar-height)) 104px 32px 104px;
+    max-width: var(--page-max-width);
+    margin: auto;
 }
 
 /* Mobile */
