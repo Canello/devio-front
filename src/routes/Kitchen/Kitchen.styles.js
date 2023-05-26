@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Toggle } from "../../components/Toggle/Toggle.component";
 
 export const KitchenStyled = styled.div`
     display: flex;
@@ -17,15 +18,14 @@ export const ListContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 900;
     color: var(--neutral-8);
 `;
 
 export const Divisor = styled.div`
-    width: 1px;
-    height: 400px;
-    margin: 0 32px;
+    width: 0px;
+    margin: 0 64px;
     border-left: 2px solid var(--neutral-8);
 
     @media screen and (max-width: 900px) {
@@ -33,12 +33,16 @@ export const Divisor = styled.div`
     }
 `;
 
-export const ReadyContainer = styled.div`
-    flex: 1;
-`;
-
 export const List = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+`;
+
+export const KitchenToggle = styled(Toggle)`
+    margin-bottom: 48px;
+
+    @media screen and (min-width: 900px) {
+        display: none;
+    }
 `;

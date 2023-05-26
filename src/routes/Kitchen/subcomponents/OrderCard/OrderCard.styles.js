@@ -54,7 +54,7 @@ const Text = styled.span`
 `;
 
 export const CustomerName = styled(Text)`
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--neutral-8);
 `;
@@ -62,7 +62,7 @@ export const CustomerName = styled(Text)`
 export const OrderContent = styled(Text)`
     font-size: 12px;
     font-weight: 500;
-    color: var(--neutral-6);
+    color: var(--neutral-5);
 `;
 
 export const ButtonsContainer = styled.div`

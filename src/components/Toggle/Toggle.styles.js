@@ -7,16 +7,11 @@ export const ToggleStyled = styled.div`
     align-items: center;
     height: 40px;
     max-width: 280px;
-    margin-bottom: 48px;
     border-radius: 16px;
     background-color: var(--green-3);
     font-size: 16px;
     font-weight: 700;
     text-align: center;
-
-    @media screen and (min-width: 900px) {
-        display: none;
-    }
 `;
 
 export const Side = styled.div`

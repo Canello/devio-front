@@ -3,6 +3,7 @@ import * as uuid from "uuid";
 import {
     Divisor,
     KitchenStyled,
+    KitchenToggle,
     List,
     ListContainer,
     Title,
@@ -11,7 +12,6 @@ import { Spacer } from "../../components/Spacer/Spacer.component";
 import { OrderCard } from "./subcomponents/OrderCard/OrderCard.component";
 import HamburguerImage from "../../assets/images/category-combos.png";
 import { CATEGORIES } from "../../utils/constants";
-import { Toggle } from "./subcomponents/Toggle/Toggle.component";
 
 const ORDERS = [
     {
@@ -58,7 +58,7 @@ export const Kitchen = () => {
 
     return (
         <KitchenStyled className="page">
-            <Toggle
+            <KitchenToggle
                 isOn={!isShowingPreparingList}
                 labelOn="Pronto"
                 labelOff="Preparando"
