@@ -9,6 +9,7 @@ import {
 } from "./ProductCard.styles";
 import { Spacer } from "../../../../components/Spacer/Spacer.component";
 import Pattern from "../../../../assets/images/burger-pattern.png";
+import { formatPrice } from "../../../../utils/functions";
 
 export const ProductCard = ({ product }) => {
     return (
@@ -19,13 +20,13 @@ export const ProductCard = ({ product }) => {
             />
             <Spacer y={64} />
             <InfoContainer>
-                <ProductImage src={product.image} />
+                <ProductImage src={product.imageUrl} />
                 <Spacer y={44} />
                 <ProductName>{product.name}</ProductName>
                 <Spacer y={4} />
                 <ProductDescription>{product.description}</ProductDescription>
                 <Spacer y={24} />
-                <ProductPrice>R$ {product.price}</ProductPrice>
+                <ProductPrice>R$ {formatPrice(product.price)}</ProductPrice>
             </InfoContainer>
         </ProductCardStyled>
     );

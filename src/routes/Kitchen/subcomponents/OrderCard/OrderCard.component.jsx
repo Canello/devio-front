@@ -1,3 +1,4 @@
+import * as uuid from "uuid";
 import {
     ButtonsContainer,
     CustomerName,
@@ -15,18 +16,24 @@ import { IconButton } from "../IconButton/IconButton.component";
 import { Spacer } from "../../../../components/Spacer/Spacer.component";
 
 export const OrderCard = ({ order, isReady = false }) => {
-    const { product, id, quantity, customerName, notes } = order;
+    const { content, code, customerName, notes } = order;
+
+    const contentInfo = content.map((item) => (
+        <OrderContent key={uuid.v4()}>
+            {item.quantity + "x " + item.product.name}
+        </OrderContent>
+    ));
 
     return (
         <OrderCardStyled isReady={isReady}>
             <MainContainer>
                 <InfoContainer>
-                    <ProductImage src={product.image} />
+                    <ProductImage src={content[0].product.imageUrl} />
                     <TextContainer>
-                        <CustomerName>{id + " - " + customerName}</CustomerName>
-                        <OrderContent>
-                            {quantity + "x " + product.name}
-                        </OrderContent>
+                        <CustomerName>
+                            {code + " - " + customerName}
+                        </CustomerName>
+                        {contentInfo}
                     </TextContainer>
                 </InfoContainer>
                 <ButtonsContainer>

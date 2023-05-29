@@ -1,5 +1,4 @@
-import { useState } from "react";
-import * as uuid from "uuid";
+import { useContext, useState } from "react";
 import {
     Divisor,
     KitchenStyled,
@@ -10,50 +9,19 @@ import {
 } from "./Kitchen.styles";
 import { Spacer } from "../../components/Spacer/Spacer.component";
 import { OrderCard } from "./subcomponents/OrderCard/OrderCard.component";
-import HamburguerImage from "../../assets/images/category-combos.png";
-import { CATEGORIES } from "../../utils/constants";
-
-const ORDERS = [
-    {
-        id: 1,
-        customerName: "Ricardo",
-        quantity: 1,
-        notes: "Sem pícles.",
-        product: {
-            name: "Hamburguer",
-            description: "200g de carne",
-            price: "30,50",
-            image: HamburguerImage,
-            category: CATEGORIES.combos,
-        },
-    },
-    {
-        id: 1,
-        customerName: "Ricardooooooooooooooooooo",
-        quantity: 1,
-        notes: "",
-        product: {
-            name: "Hamburguer",
-            description: "200g de carne",
-            price: "30,50",
-            image: HamburguerImage,
-            category: CATEGORIES.combos,
-        },
-    },
-];
+import { OrdersContext } from "../../contexts/orders.context";
 
 export const Kitchen = () => {
     const [isShowingPreparingList, setIsShowingPreparingList] = useState(true);
     const toggle = () => setIsShowingPreparingList(!isShowingPreparingList);
 
-    const [ordersBeingPrepared, setOrdersBeingPrepared] = useState(ORDERS);
-    const [ordersReady, setOrdersReady] = useState(ORDERS);
+    const { ordersBeingPrepared, ordersReady } = useContext(OrdersContext);
 
     const ordersBeingPreparedCards = ordersBeingPrepared.map((order) => (
-        <OrderCard key={uuid.v4()} order={order} />
+        <OrderCard key={order._id} order={order} />
     ));
     const ordersReadyCards = ordersReady.map((order) => (
-        <OrderCard key={uuid.v4()} order={order} isReady={true} />
+        <OrderCard key={order._id} order={order} isReady={true} />
     ));
 
     return (

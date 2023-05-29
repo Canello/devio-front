@@ -12,7 +12,7 @@ import { Spacer } from "../../../../components/Spacer/Spacer.component";
 import { ProductCard } from "../ProductCard/ProductCard.component";
 import PlaceholderImage from "../../../../assets/images/empty-placeholder.png";
 
-export const Products = ({ products }) => {
+export const Products = ({ products, isLoadingProducts }) => {
     const productCards = products.map((product) => (
         <ProductCard key={uuid.v4()} product={product} />
     ));
@@ -25,7 +25,7 @@ export const Products = ({ products }) => {
                 Selecione um produto para adicionar ao seu pedido
             </Subtitle>
             <Spacer y={24} />
-            {products.length > 0 ? (
+            {products.length > 0 || isLoadingProducts ? (
                 <ProductsList>{productCards}</ProductsList>
             ) : (
                 <EmptyPlaceholderContainer>

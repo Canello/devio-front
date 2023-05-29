@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import {
     ButtonsContainer,
     OrderButton,
@@ -9,59 +9,13 @@ import {
 import { Spacer } from "../../components/Spacer/Spacer.component";
 import { Categories } from "./subcomponents/Categories/Categories.component";
 import { Products } from "./subcomponents/Products/Products.component";
-import HamburguerImage from "../../assets/images/category-combos.png";
-import { CATEGORIES } from "../../utils/constants";
-
-const PRODUCTS = [
-    {
-        name: "Hamburguer",
-        description: "200g de carne",
-        price: "30,50",
-        image: HamburguerImage,
-        category: CATEGORIES.combos,
-    },
-    {
-        name: "Hamburguerrrrrrrrrrrrrrrrrrrrrrrrrrr",
-        description: "200g de carne",
-        price: "30,50",
-        image: HamburguerImage,
-        category: CATEGORIES.combos,
-    },
-    {
-        name: "Hamburguer",
-        description: "200g de carne",
-        price: "30,50",
-        image: HamburguerImage,
-        category: CATEGORIES.combos,
-    },
-    {
-        name: "Hamburguer",
-        description: "200g de carne",
-        price: "30,50",
-        image: HamburguerImage,
-        category: CATEGORIES.combos,
-    },
-];
+import { ProductsContext } from "../../contexts/products.context";
+import { useSearchProducts } from "../../hooks/useSearchProducts.hook";
 
 export const Orders = () => {
-    const [search, setSearch] = useState("");
-    const [products, setProducts] = useState(PRODUCTS);
-
-    const onSearchChange = (event) => {
-        const newSearch = event.target.value;
-        setSearch(newSearch);
-
-        let newProducts;
-        if (!newSearch) {
-            newProducts = PRODUCTS;
-        } else {
-            const searchRegex = new RegExp(newSearch.toLocaleLowerCase());
-            newProducts = PRODUCTS.filter((product) =>
-                searchRegex.test(product.name.toLocaleLowerCase())
-            );
-        }
-        setProducts(newProducts);
-    };
+    const { products, isLoadingProducts } = useContext(ProductsContext);
+    const { search, onSearchChange, searchedProducts } =
+        useSearchProducts(products);
 
     return (
         <OrdersStyled className="page">
@@ -79,7 +33,10 @@ export const Orders = () => {
                     <Spacer y={64} />
                 </>
             )}
-            <Products products={products} />
+            <Products
+                products={search.length ? searchedProducts : products}
+                isLoadingProducts={isLoadingProducts}
+            />
             <Spacer y={64} />
             <ButtonsContainer>
                 <OrderButton variant="secondary">Cancelar</OrderButton>
