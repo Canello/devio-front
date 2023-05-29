@@ -27,5 +27,5 @@ export const useApi = (service, config = {}) => {
         }
     };
 
-    return [fetchData, data, isLoading, error];
+    return [fetchData, data, isLoading, error, setData];
 };

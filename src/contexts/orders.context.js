@@ -9,7 +9,24 @@ export const OrdersProvider = ({ children }) => {
     const [ordersBeingPrepared, setOrdersBeingPrepared] = useState([]);
     const [ordersReady, setOrdersReady] = useState([]);
 
-    const [fetchOrders, orders] = useApi(getAllOrders, { initialData: [] });
+    const [fetchOrders, orders, isLoadingOrders, ordersError, setOrders] =
+        useApi(getAllOrders, { initialData: [] });
+
+    const setOrderAsReady = (_id) => {
+        const updatedOrders = orders.map((order) => {
+            const updatedOrder = { ...order };
+            if (order._id === _id) {
+                updatedOrder.status = ORDER_STATUSES.ready;
+            }
+            return updatedOrder;
+        });
+        setOrders(updatedOrders);
+    };
+
+    const removeOrder = (_id) => {
+        const updatedOrders = orders.filter((order) => order._id !== _id);
+        setOrders(updatedOrders);
+    };
 
     const updateOrders = () => {
         const ordersBeingPrepared = orders.filter(
@@ -30,7 +47,13 @@ export const OrdersProvider = ({ children }) => {
         updateOrders();
     }, [orders]);
 
-    const value = { ordersBeingPrepared, ordersReady, fetchOrders };
+    const value = {
+        ordersBeingPrepared,
+        ordersReady,
+        fetchOrders,
+        setOrderAsReady,
+        removeOrder,
+    };
 
     return (
         <OrdersContext.Provider value={value}>

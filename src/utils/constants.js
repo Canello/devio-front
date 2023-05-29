@@ -18,6 +18,7 @@ export const CATEGORIES = {
 export const ORDER_STATUSES = {
     preparing: "preparing",
     ready: "ready",
+    pickedUp: "picked_up",
 };
 
 export const PAYMENT_TYPES = {

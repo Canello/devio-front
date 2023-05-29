@@ -15,7 +15,12 @@ import {
 import { IconButton } from "../IconButton/IconButton.component";
 import { Spacer } from "../../../../components/Spacer/Spacer.component";
 
-export const OrderCard = ({ order, isReady = false }) => {
+export const OrderCard = ({
+    order,
+    isReady = false,
+    onClickOk = () => {},
+    onClickCancel = () => {},
+}) => {
     const { content, code, customerName, notes } = order;
 
     const contentInfo = content.map((item) => (
@@ -37,8 +42,10 @@ export const OrderCard = ({ order, isReady = false }) => {
                     </TextContainer>
                 </InfoContainer>
                 <ButtonsContainer>
-                    <IconButton variant="cancel" />
-                    {isReady ? null : <IconButton variant="confirm" />}
+                    <IconButton variant="cancel" onClick={onClickCancel} />
+                    {isReady ? null : (
+                        <IconButton variant="confirm" onClick={onClickOk} />
+                    )}
                 </ButtonsContainer>
             </MainContainer>
             {notes && !isReady ? (
