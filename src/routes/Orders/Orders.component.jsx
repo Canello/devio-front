@@ -11,11 +11,19 @@ import { Categories } from "./subcomponents/Categories/Categories.component";
 import { Products } from "./subcomponents/Products/Products.component";
 import { ProductsContext } from "../../contexts/products.context";
 import { useSearchProducts } from "../../hooks/useSearchProducts.hook";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "../../utils/constants";
+import { CartContext } from "../../contexts/cart.context";
 
 export const Orders = () => {
     const { products, isLoadingProducts } = useContext(ProductsContext);
     const { search, onSearchChange, searchedProducts } =
         useSearchProducts(products);
+
+    const navigate = useNavigate();
+    const goToPayments = () => navigate(PATHS.payments);
+
+    const { clearCart } = useContext(CartContext);
 
     return (
         <OrdersStyled className="page">
@@ -39,8 +47,12 @@ export const Orders = () => {
             />
             <Spacer y={64} />
             <ButtonsContainer>
-                <OrderButton variant="secondary">Cancelar</OrderButton>
-                <OrderButton variant="primary">Finalizar Pedido</OrderButton>
+                <OrderButton variant="secondary" onClick={clearCart}>
+                    Cancelar
+                </OrderButton>
+                <OrderButton variant="primary" onClick={goToPayments}>
+                    Finalizar Pedido
+                </OrderButton>
             </ButtonsContainer>
         </OrdersStyled>
     );

@@ -9,9 +9,13 @@ export const CartProvider = ({ children }) => {
 
     const onNotesChange = (event) => setNotes(event.target.value);
 
+    const clearCart = () => {
+        setItems([]);
+        setNotes("");
+    };
+
     const setItem = (product, quantity = 1, additionals = []) => {
         if (!product) return;
-        console.log("will set item", product, quantity);
 
         if (quantity === 0) {
             // Remove item from items
@@ -53,8 +57,6 @@ export const CartProvider = ({ children }) => {
             (acc, el) => acc + el.product.price * el.quantity,
             0
         );
-        console.log(items);
-        console.log(totalPrice);
         setTotalPrice(totalPrice);
     };
 
@@ -75,6 +77,7 @@ export const CartProvider = ({ children }) => {
         onNotesChange,
         notes,
         getItem,
+        clearCart,
     };
 
     return (

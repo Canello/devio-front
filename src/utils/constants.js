@@ -1,4 +1,5 @@
-export const API_ADDRESS = "https://devio-back.herokuapp.com";
+// export const API_ADDRESS = "https://devio-back.herokuapp.com";
+export const API_ADDRESS = "http://localhost:3001";
 
 export const PATHS = {
     orders: "/",
@@ -17,4 +18,10 @@ export const CATEGORIES = {
 export const ORDER_STATUSES = {
     preparing: "preparing",
     ready: "ready",
+};
+
+export const PAYMENT_TYPES = {
+    credit: "credit",
+    debt: "debt",
+    cash: "cash",
 };

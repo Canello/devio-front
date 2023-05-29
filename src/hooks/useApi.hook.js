@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useApi = (service, config) => {
+export const useApi = (service, config = {}) => {
     // Default values
     const initialData = config.initialData || null;
     const initialIsLoading = config.initialIsLoading || false;

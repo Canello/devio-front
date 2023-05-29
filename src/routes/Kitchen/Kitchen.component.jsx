@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
     Divisor,
     KitchenStyled,
@@ -15,7 +15,8 @@ export const Kitchen = () => {
     const [isShowingPreparingList, setIsShowingPreparingList] = useState(true);
     const toggle = () => setIsShowingPreparingList(!isShowingPreparingList);
 
-    const { ordersBeingPrepared, ordersReady } = useContext(OrdersContext);
+    const { ordersBeingPrepared, ordersReady, fetchOrders } =
+        useContext(OrdersContext);
 
     const ordersBeingPreparedCards = ordersBeingPrepared.map((order) => (
         <OrderCard key={order._id} order={order} />
@@ -23,6 +24,10 @@ export const Kitchen = () => {
     const ordersReadyCards = ordersReady.map((order) => (
         <OrderCard key={order._id} order={order} isReady={true} />
     ));
+
+    useEffect(() => {
+        fetchOrders();
+    }, []);
 
     return (
         <KitchenStyled className="page">

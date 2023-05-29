@@ -28,7 +28,7 @@ export const OrderCard = ({ order, isReady = false }) => {
         <OrderCardStyled isReady={isReady}>
             <MainContainer>
                 <InfoContainer>
-                    <ProductImage src={content[0].product.imageUrl} />
+                    <ProductImage src={content[0]?.product.imageUrl} />
                     <TextContainer>
                         <CustomerName>
                             {code + " - " + customerName}

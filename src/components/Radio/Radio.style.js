@@ -5,7 +5,7 @@ export const RadioStyled = styled.div`
     justify-content: center;
     align-items: center;
     width: ${({ size }) => size}px;
-    aspect-ratio: 1;
+    height: ${({ size }) => size}px;
     border-radius: 100%;
     border: 2px solid var(--green-2);
 
@@ -16,6 +16,7 @@ export const RadioStyled = styled.div`
 
 export const Ball = styled.div`
     width: ${({ size }) => size - 8}px;
+    height: ${({ size }) => size - 8}px;
     aspect-ratio: 1;
     border-radius: 100%;
     background-color: ${({ isChecked }) =>

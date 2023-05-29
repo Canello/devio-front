@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import * as uuid from "uuid";
 import {
     Divisor,
@@ -13,6 +13,7 @@ import {
 import { CATEGORIES } from "../../utils/constants";
 import HamburguerImage from "../../assets/images/category-combos.png";
 import { Spacer } from "../../components/Spacer/Spacer.component";
+import { OrdersContext } from "../../contexts/orders.context";
 
 const ORDERS = [
     {
@@ -47,8 +48,8 @@ export const Pickup = () => {
     const [isShowingPreparingList, setIsShowingPreparingList] = useState(true);
     const toggle = () => setIsShowingPreparingList(!isShowingPreparingList);
 
-    const [ordersBeingPrepared, setOrdersBeingPrepared] = useState(ORDERS);
-    const [ordersReady, setOrdersReady] = useState(ORDERS);
+    const { ordersBeingPrepared, ordersReady, fetchOrders } =
+        useContext(OrdersContext);
 
     const ordersBeingPreparedCards = ordersBeingPrepared.map((order) => (
         <PreparingCard key={uuid.v4()}>{order.customerName}</PreparingCard>
@@ -56,6 +57,10 @@ export const Pickup = () => {
     const ordersReadyCards = ordersReady.map((order) => (
         <ReadyCard key={uuid.v4()}>{order.customerName}</ReadyCard>
     ));
+
+    useEffect(() => {
+        fetchOrders();
+    }, []);
 
     return (
         <PickupStyled className="page">
