@@ -4,6 +4,7 @@ export const PATHS = {
     orders: "/",
     kitchen: "/cozinha",
     pickup: "/retirada",
+    payments: "/pagamento",
 };
 
 export const CATEGORIES = {

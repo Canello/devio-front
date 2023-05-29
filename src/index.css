@@ -117,3 +117,27 @@ button {
         padding: 48px 32px calc(32px + var(--navbar-height)) 32px;
     }
 }
+
+/* ---------------------- */
+/* Scrollbars */
+/* ---------------------- */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--neutral-5);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neutral-4);
+}

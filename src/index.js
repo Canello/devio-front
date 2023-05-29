@@ -10,14 +10,14 @@ import { OrdersProvider } from "./contexts/orders.context";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <ProductsProvider>
-            <OrdersProvider>
-                <CartProvider>
-                    <BrowserRouter>
+        <BrowserRouter>
+            <ProductsProvider>
+                <OrdersProvider>
+                    <CartProvider>
                         <App />
-                    </BrowserRouter>
-                </CartProvider>
-            </OrdersProvider>
-        </ProductsProvider>
+                    </CartProvider>
+                </OrdersProvider>
+            </ProductsProvider>
+        </BrowserRouter>
     </React.StrictMode>
 );

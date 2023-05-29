@@ -11,9 +11,9 @@ import { Spacer } from "../../../../components/Spacer/Spacer.component";
 import Pattern from "../../../../assets/images/burger-pattern.png";
 import { formatPrice } from "../../../../utils/functions";
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product, ...otherProps }) => {
     return (
-        <ProductCardStyled>
+        <ProductCardStyled {...otherProps}>
             <BackgroundPattern
                 src={Pattern}
                 alt="Background com desenho de comidas"
