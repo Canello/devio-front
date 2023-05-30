@@ -1,4 +1,5 @@
 import { API_ADDRESS, ORDER_STATUSES } from "../utils/constants";
+import { currencyToNumber } from "../utils/functions";
 
 export const getAllOrders = async () => {
     const response = await fetch(API_ADDRESS + "/orders");
@@ -7,7 +8,15 @@ export const getAllOrders = async () => {
     return responseJson.data.orders;
 };
 
-export const createOrder = async ({ code, customerName, notes, content }) => {
+export const createOrder = async ({
+    code,
+    customerName,
+    notes,
+    content,
+    paymentType,
+    received,
+    change,
+}) => {
     const response = await fetch(API_ADDRESS + "/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -16,6 +25,9 @@ export const createOrder = async ({ code, customerName, notes, content }) => {
             customerName,
             notes,
             content,
+            paymentType,
+            received: currencyToNumber(received),
+            change: currencyToNumber(change),
         }),
     });
     const responseJson = await response.json();

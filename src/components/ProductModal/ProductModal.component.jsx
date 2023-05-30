@@ -1,9 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import * as uuid from "uuid";
-import { Modal } from "../Modal/Modal.component";
 import { Spacer } from "../Spacer/Spacer.component";
 import {
-    Additionals,
     BackgroundPattern,
     ButtonsContainer,
     ModalButton,
@@ -14,6 +11,7 @@ import {
     ProductImage,
     ProductImageContainer,
     ProductInfoContainer,
+    ProductModalStyled,
     ProductName,
     ProductPrice,
     ProductTextInfoContainer,
@@ -21,18 +19,17 @@ import {
     QuantityContainer,
     QuantityText,
     QuantityWrapper,
-    SectionDescription,
     SectionTitle,
     Title,
     WhiteBackground,
 } from "./ProductModal.styles";
-import HamburguerImage from "../../assets/images/category-combos.png";
 import Pattern from "../../assets/images/burger-pattern.png";
 import Plus from "../../assets/icons/plus.svg";
 import Minus from "../../assets/icons/minus.svg";
 import { formatPrice } from "../../utils/functions";
 import { OrderSummary } from "../OrderSummary/OrderSummary.component";
 import { CartContext } from "../../contexts/cart.context";
+import { API_ADDRESS } from "../../utils/constants";
 
 export const ProductModal = ({ isShowing, onClose, product }) => {
     const { notes, onNotesChange, setItem, getItem } = useContext(CartContext);
@@ -59,7 +56,7 @@ export const ProductModal = ({ isShowing, onClose, product }) => {
 
     if (!product) return null;
     return (
-        <Modal isShowing={isShowing} onClose={onClose}>
+        <ProductModalStyled isShowing={isShowing} onClose={onClose}>
             <Title>Revise seu pedido!</Title>
             <Spacer y={48} />
             <ProductContainer>
@@ -71,7 +68,7 @@ export const ProductModal = ({ isShowing, onClose, product }) => {
                         />
                         <WhiteBackground />
                         <ProductImage
-                            src={HamburguerImage}
+                            src={API_ADDRESS + product?.imageUrl}
                             alt="Imagem do produto"
                         />
                     </ProductImageContainer>
@@ -102,19 +99,6 @@ export const ProductModal = ({ isShowing, onClose, product }) => {
                     R$ {formatPrice(product.price * quantity)}
                 </ProductPrice>
             </ProductContainer>
-            {/* {product.additionals.length > 0 ? (
-                <>
-                    <Spacer y={48} />
-                    <SectionTitle>Adicionais</SectionTitle>
-                    <Spacer y={4} />
-                    <SectionDescription>
-                        Selecione os ingredientes que você quer adicionar a mais
-                        no seu lanche.
-                    </SectionDescription>
-                    <Spacer y={32} />
-                    <Additionals>{additionalCards}</Additionals>
-                </>
-            ) : null} */}
             <Spacer y={48} />
             <SectionTitle>Observações</SectionTitle>
             <Spacer y={8} />
@@ -134,6 +118,6 @@ export const ProductModal = ({ isShowing, onClose, product }) => {
                     Adicionar ao pedido
                 </ModalButton>
             </ButtonsContainer>
-        </Modal>
+        </ProductModalStyled>
     );
 };

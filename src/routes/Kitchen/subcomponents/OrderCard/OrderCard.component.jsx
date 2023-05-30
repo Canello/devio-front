@@ -30,8 +30,6 @@ export const OrderCard = ({
         </OrderContent>
     ));
 
-    console.log(content);
-
     return (
         <OrderCardStyled isReady={isReady}>
             <MainContainer>

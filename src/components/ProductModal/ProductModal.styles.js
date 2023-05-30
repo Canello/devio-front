@@ -1,8 +1,16 @@
 import styled from "styled-components";
 import { MultilineInput } from "../MultilineInput/MultilineInput.component";
 import { Button } from "../Button/Button.component";
+import { Modal } from "../Modal/Modal.component";
 
 const quantityButtonRadius = "36px";
+
+export const ProductModalStyled = styled(Modal)`
+    @media screen and (max-width: 400px) {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+`;
 
 export const Title = styled.h1`
     font-size: 28px;
@@ -12,12 +20,22 @@ export const Title = styled.h1`
 
 export const ProductContainer = styled.div`
     display: flex;
-    width: 700px;
     justify-content: space-between;
+    width: 100%;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+        gap: 16x;
+    }
 `;
 
 export const ProductInfoContainer = styled.div`
     display: flex;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+        gap: 8px;
+    }
 `;
 
 export const ProductImageContainer = styled.div`
@@ -119,22 +137,9 @@ export const QuantityText = styled.span`
     color: var(--neutral-8);
 `;
 
-export const Additionals = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
-`;
-
 export const SectionTitle = styled.span`
     font-size: 16px;
     font-weight: 900;
-    color: var(--neutral-8);
-`;
-
-export const SectionDescription = styled.span`
-    font-size: 13px;
-    font-weight: 500;
     color: var(--neutral-8);
 `;
 
@@ -147,9 +152,18 @@ export const ButtonsContainer = styled.div`
     display: flex;
     justify-content: flex-end;
     gap: 24px;
+
+    @media screen and (max-width: 700px) {
+        flex-direction: column-reverse;
+        gap: 16px;
+    }
 `;
 
 export const ModalButton = styled(Button)`
     width: 240px;
     height: 44px;
+
+    @media screen and (max-width: 700px) {
+        width: 100%;
+    }
 `;
