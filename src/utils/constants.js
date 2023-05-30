@@ -3,8 +3,8 @@ import SideDishesImage from "../assets/images/category-side-dishes.png";
 import DrinksImage from "../assets/images/category-drinks.png";
 import DessertsImage from "../assets/images/category-desserts.png";
 
-// export const API_ADDRESS = "https://devio-back.herokuapp.com";
-export const API_ADDRESS = "http://localhost:3001";
+export const API_ADDRESS = "https://devio-back.herokuapp.com";
+// export const API_ADDRESS = "http://localhost:3001";
 
 export const PATHS = {
     orders: "/",
