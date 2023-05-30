@@ -22,7 +22,7 @@ export const CartProvider = ({ children }) => {
             const updatedItems = items.filter(
                 (item) => item.product._id !== product._id
             );
-            setItem(updatedItems);
+            setItems(updatedItems);
             return;
         }
 
