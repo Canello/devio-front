@@ -3,6 +3,17 @@ import { Button } from "../../components/Button/Button.component";
 
 export const CategoryStyled = styled.div``;
 
+export const Back = styled.span`
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--neutral-5);
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+    }
+`;
+
 export const Title = styled.h1`
     font-size: 24px;
     font-weight: 900;

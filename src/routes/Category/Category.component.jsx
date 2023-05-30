@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import {
+    Back,
     ButtonsContainer,
     CategoryStyled,
     OrderButton,
@@ -14,7 +15,7 @@ import { PATHS } from "../../utils/constants";
 
 export const Category = ({ category }) => {
     const { products, isLoadingProducts } = useContext(ProductsContext);
-    const { clearCart } = useContext(CartContext);
+    const { items, clearCart } = useContext(CartContext);
 
     const navigate = useNavigate();
     const goToPayments = () => navigate(PATHS.payments);
@@ -34,6 +35,8 @@ export const Category = ({ category }) => {
 
     return (
         <CategoryStyled className="page">
+            <Back onClick={goToOrders}>{"← Voltar"}</Back>
+            <Spacer y={16} />
             <Title>{category.name}</Title>
             <Spacer y={32} />
             <Products
@@ -42,10 +45,18 @@ export const Category = ({ category }) => {
             />
             <Spacer y={64} />
             <ButtonsContainer>
-                <OrderButton variant="secondary" onClick={goToOrders}>
-                    Voltar
+                <OrderButton
+                    variant="secondary"
+                    disabled={items.length === 0}
+                    onClick={clearCart}
+                >
+                    Cancelar
                 </OrderButton>
-                <OrderButton variant="primary" onClick={goToPayments}>
+                <OrderButton
+                    variant="primary"
+                    disabled={items.length === 0}
+                    onClick={goToPayments}
+                >
                     Finalizar Pedido
                 </OrderButton>
             </ButtonsContainer>

@@ -23,7 +23,7 @@ export const Orders = () => {
     const navigate = useNavigate();
     const goToPayments = () => navigate(PATHS.payments);
 
-    const { clearCart } = useContext(CartContext);
+    const { clearCart, items } = useContext(CartContext);
 
     return (
         <OrdersStyled className="page">
@@ -47,10 +47,18 @@ export const Orders = () => {
             />
             <Spacer y={64} />
             <ButtonsContainer>
-                <OrderButton variant="secondary" onClick={clearCart}>
+                <OrderButton
+                    variant="secondary"
+                    disabled={items.length === 0}
+                    onClick={clearCart}
+                >
                     Cancelar
                 </OrderButton>
-                <OrderButton variant="primary" onClick={goToPayments}>
+                <OrderButton
+                    variant="primary"
+                    disabled={items.length === 0}
+                    onClick={goToPayments}
+                >
                     Finalizar Pedido
                 </OrderButton>
             </ButtonsContainer>
