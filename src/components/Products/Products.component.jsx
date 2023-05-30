@@ -9,9 +9,9 @@ import {
     Subtitle,
     Title,
 } from "./Products.styles";
-import { Spacer } from "../../../../components/Spacer/Spacer.component";
+import { Spacer } from "../Spacer/Spacer.component";
 import { ProductCard } from "../ProductCard/ProductCard.component";
-import PlaceholderImage from "../../../../assets/images/empty-placeholder.png";
+import PlaceholderImage from "../../assets/images/empty-placeholder.png";
 import { ProductModal } from "../ProductModal/ProductModal.component";
 
 export const Products = ({ products, isLoadingProducts }) => {

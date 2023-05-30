@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
     ButtonsContainer,
     OrderButton,
@@ -8,7 +8,7 @@ import {
 } from "./Orders.styles";
 import { Spacer } from "../../components/Spacer/Spacer.component";
 import { Categories } from "./subcomponents/Categories/Categories.component";
-import { Products } from "./subcomponents/Products/Products.component";
+import { Products } from "../../components/Products/Products.component";
 import { ProductsContext } from "../../contexts/products.context";
 import { useSearchProducts } from "../../hooks/useSearchProducts.hook";
 import { useNavigate } from "react-router-dom";

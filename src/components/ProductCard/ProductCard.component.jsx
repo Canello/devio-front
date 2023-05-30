@@ -7,9 +7,9 @@ import {
     ProductName,
     ProductPrice,
 } from "./ProductCard.styles";
-import { Spacer } from "../../../../components/Spacer/Spacer.component";
-import Pattern from "../../../../assets/images/burger-pattern.png";
-import { formatPrice } from "../../../../utils/functions";
+import { Spacer } from "../../components/Spacer/Spacer.component";
+import Pattern from "../../assets/images/burger-pattern.png";
+import { formatPrice } from "../../utils/functions";
 
 export const ProductCard = ({ product, ...otherProps }) => {
     return (

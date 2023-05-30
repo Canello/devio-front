@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { MultilineInput } from "../../../../components/MultilineInput/MultilineInput.component";
-import { Button } from "../../../../components/Button/Button.component";
+import { MultilineInput } from "../MultilineInput/MultilineInput.component";
+import { Button } from "../Button/Button.component";
 
 const quantityButtonRadius = "36px";
 

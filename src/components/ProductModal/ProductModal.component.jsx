@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import * as uuid from "uuid";
-import { Modal } from "../../../../components/Modal/Modal.component";
-import { Spacer } from "../../../../components/Spacer/Spacer.component";
+import { Modal } from "../Modal/Modal.component";
+import { Spacer } from "../Spacer/Spacer.component";
 import {
     Additionals,
     BackgroundPattern,
@@ -26,13 +26,13 @@ import {
     Title,
     WhiteBackground,
 } from "./ProductModal.styles";
-import HamburguerImage from "../../../../assets/images/category-combos.png";
-import Pattern from "../../../../assets/images/burger-pattern.png";
-import Plus from "../../../../assets/icons/plus.svg";
-import Minus from "../../../../assets/icons/minus.svg";
-import { formatPrice } from "../../../../utils/functions";
-import { OrderSummary } from "../../../../components/OrderSummary/OrderSummary.component";
-import { CartContext } from "../../../../contexts/cart.context";
+import HamburguerImage from "../../assets/images/category-combos.png";
+import Pattern from "../../assets/images/burger-pattern.png";
+import Plus from "../../assets/icons/plus.svg";
+import Minus from "../../assets/icons/minus.svg";
+import { formatPrice } from "../../utils/functions";
+import { OrderSummary } from "../OrderSummary/OrderSummary.component";
+import { CartContext } from "../../contexts/cart.context";
 
 export const ProductModal = ({ isShowing, onClose, product }) => {
     const { notes, onNotesChange, setItem, getItem } = useContext(CartContext);

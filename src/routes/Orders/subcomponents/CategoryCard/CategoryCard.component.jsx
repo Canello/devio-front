@@ -5,15 +5,15 @@ import {
     CategoryName,
 } from "./CategoryCard.styles";
 
-export const CategoryCard = ({ category }) => {
+export const CategoryCard = ({ categoryInfo, ...otherProps }) => {
     return (
-        <CategoryCardStyled>
+        <CategoryCardStyled {...otherProps}>
             <CategoryImage
-                src={category.image}
-                alt={"Thumbnail da categoria " + category.name}
+                src={categoryInfo.image}
+                alt={"Thumbnail da categoria " + categoryInfo.name}
             />
             <Spacer y={8} />
-            <CategoryName>{category.name}</CategoryName>
+            <CategoryName>{categoryInfo.name}</CategoryName>
         </CategoryCardStyled>
     );
 };
