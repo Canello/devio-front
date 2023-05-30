@@ -10,6 +10,7 @@ import {
 import { Spacer } from "../../components/Spacer/Spacer.component";
 import Pattern from "../../assets/images/burger-pattern.png";
 import { formatPrice } from "../../utils/functions";
+import { API_ADDRESS } from "../../utils/constants";
 
 export const ProductCard = ({ product, ...otherProps }) => {
     return (
@@ -20,7 +21,7 @@ export const ProductCard = ({ product, ...otherProps }) => {
             />
             <Spacer y={64} />
             <InfoContainer>
-                <ProductImage src={product.imageUrl} />
+                <ProductImage src={API_ADDRESS + product.imageUrl} />
                 <Spacer y={44} />
                 <ProductName>{product.name}</ProductName>
                 <Spacer y={4} />

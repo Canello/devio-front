@@ -14,6 +14,7 @@ import {
 } from "./OrderCard.styles";
 import { IconButton } from "../IconButton/IconButton.component";
 import { Spacer } from "../../../../components/Spacer/Spacer.component";
+import { API_ADDRESS } from "../../../../utils/constants";
 
 export const OrderCard = ({
     order,
@@ -29,11 +30,15 @@ export const OrderCard = ({
         </OrderContent>
     ));
 
+    console.log(content);
+
     return (
         <OrderCardStyled isReady={isReady}>
             <MainContainer>
                 <InfoContainer>
-                    <ProductImage src={content[0]?.product.imageUrl} />
+                    <ProductImage
+                        src={API_ADDRESS + content[0]?.product.imageUrl}
+                    />
                     <TextContainer>
                         <CustomerName>
                             {code + " - " + customerName}
