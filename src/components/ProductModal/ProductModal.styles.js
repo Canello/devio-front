@@ -6,6 +6,9 @@ import { Modal } from "../Modal/Modal.component";
 const quantityButtonRadius = "36px";
 
 export const ProductModalStyled = styled(Modal)`
+    width: calc(100% - 48px);
+    max-width: 800px;
+
     @media screen and (max-width: 400px) {
         padding-left: 32px;
         padding-right: 32px;
@@ -25,7 +28,7 @@ export const ProductContainer = styled.div`
 
     @media screen and (max-width: 600px) {
         flex-direction: column;
-        gap: 16x;
+        gap: 16px;
     }
 `;
 

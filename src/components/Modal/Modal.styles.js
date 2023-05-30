@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ModalStyled = styled.div`
-    position: absolute;
+    position: fixed;
     display: ${({ isShowing }) => (isShowing ? "flex" : "none")};
     justify-content: center;
     z-index: 999;
@@ -10,6 +10,7 @@ export const ModalStyled = styled.div`
     width: 100vw;
     height: 100vh;
     padding: 64px 0;
+    overflow-y: scroll;
 `;
 
 export const Content = styled.div`
