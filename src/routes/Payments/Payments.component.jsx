@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
     ButtonsContainer,
     CodeInput,
@@ -12,7 +12,6 @@ import {
     SectionsContainer,
     Title,
 } from "./Payments.styles";
-import { Input } from "../../components/Input/Input.component";
 import { OrderSummary } from "../../components/OrderSummary/OrderSummary.component";
 import { Spacer } from "../../components/Spacer/Spacer.component";
 import { PaymentCard } from "./subcomponents/PaymentCard/PaymentCard.component";
@@ -24,24 +23,66 @@ import { createOrder } from "../../services/orders.service";
 import { CartContext } from "../../contexts/cart.context";
 import { useNavigate } from "react-router-dom";
 import { SuccessModal } from "./subcomponents/SuccessModal/SuccessModal.component";
+import {
+    onlyNumbers,
+    currencyToNumber,
+    floatToCurrency,
+    inputToCurrency,
+} from "../../utils/functions";
 
 export const Payments = () => {
+    // Inputs
     const [paymentType, setPaymentType] = useState(PAYMENT_TYPES.cash);
     const [customerName, setCustomerName] = useState("");
     const [code, setCode] = useState("");
-    const [received, setReceived] = useState("");
-    const [change, setChange] = useState("");
-    const onChange = (setFn) => (event) => setFn(event.target.value);
+    const onChangeCustomerName = (event) => setCustomerName(event.target.value);
+    const onChangeCode = (event) => setCode(onlyNumbers(event.target.value));
 
+    // Change calculation
+    const [received, setReceived] = useState("0,00");
+    const [change, setChange] = useState("");
+    const onChangeReceived = (event) =>
+        setReceived(inputToCurrency(event.target.value));
+    useEffect(() => {
+        const change = currencyToNumber(received) - totalPrice;
+        setChange(floatToCurrency(change));
+    }, [received]);
+
+    // Alerts
+    const [customerNameAlert, setCustomerNameAlert] = useState(false);
+    const [codeAlert, setCodeAlert] = useState(false);
+    const [receivedAlert, setReceivedAlert] = useState(false);
+
+    // Modal
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => setIsModalOpen(true);
 
+    // Navigation
     const navigate = useNavigate();
     const goToOrders = () => navigate(PATHS.orders);
 
-    const { clearCart, notes, items } = useContext(CartContext);
+    // Submit order
+    const { clearCart, notes, items, totalPrice } = useContext(CartContext);
     const [fetchCreateOrder] = useApi(createOrder);
+    const validateOrder = () => {
+        const isInvalidCustomerName = customerName.length === 0;
+        const isInvalidCode = code.length === 0;
+        const isInvalidReceived = currencyToNumber(received) - totalPrice < 0;
+
+        if (isInvalidCustomerName) setCustomerNameAlert(true);
+        else setCustomerNameAlert(false);
+
+        if (isInvalidCode) setCodeAlert(true);
+        else setCodeAlert(false);
+
+        if (isInvalidReceived) setReceivedAlert(true);
+        else setReceivedAlert(false);
+
+        return !(isInvalidCustomerName || isInvalidCode || isInvalidReceived);
+    };
     const submitOrder = () => {
+        const isValid = validateOrder();
+        if (!isValid) return;
         fetchCreateOrder({
             code,
             customerName,
@@ -69,13 +110,15 @@ export const Payments = () => {
                         <PaymentInput
                             label="Nome do cliente"
                             placeholder="Primeiro nome"
+                            alert={customerNameAlert}
                             value={customerName}
-                            onChange={onChange(setCustomerName)}
+                            onChange={onChangeCustomerName}
                         />
                         <CodeInput
                             label="Código"
+                            alert={codeAlert}
                             value={code}
-                            onChange={onChange(setCode)}
+                            onChange={onChangeCode}
                         />
                     </InputsContainer>
                 </Section>
@@ -109,13 +152,14 @@ export const Payments = () => {
                     <InputsContainer>
                         <PaymentInput
                             label="Valor entregue"
+                            alert={receivedAlert}
                             value={received}
-                            onChange={onChange(setReceived)}
+                            onChange={onChangeReceived}
                         />
                         <PaymentInput
                             label="Troco"
                             value={change}
-                            onChange={onChange(setChange)}
+                            onChange={() => {}}
                         />
                     </InputsContainer>
                 </Section>

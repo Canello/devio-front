@@ -2,7 +2,7 @@ import * as uuid from "uuid";
 import { InputContainer, InputStyled, Label } from "./Input.styles";
 import { Spacer } from "../Spacer/Spacer.component";
 
-export const Input = ({ className, label, ...otherProps }) => {
+export const Input = ({ className, label, alert, ...otherProps }) => {
     const id = uuid.v4();
 
     return (
@@ -13,7 +13,7 @@ export const Input = ({ className, label, ...otherProps }) => {
                     <Spacer y={4} />
                 </>
             ) : null}
-            <InputStyled id={id} {...otherProps}></InputStyled>
+            <InputStyled id={id} alert={alert} {...otherProps}></InputStyled>
         </InputContainer>
     );
 };

@@ -16,7 +16,8 @@ export const InputStyled = styled.input`
     height: 36px;
     border-radius: 4px;
     padding: 0 16px;
-    background-color: var(--neutral-2);
+    background-color: ${({ alert }) =>
+        alert ? "var(--red-2)" : "var(--neutral-2)"};
 
     --placeholder-font-size: 14px;
     --placeholder-font-weight: 500;

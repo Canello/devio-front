@@ -21,7 +21,7 @@ export const Section = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 500px;
+    max-width: 480px;
 `;
 
 export const SectionTitle = styled.span`
@@ -39,6 +39,7 @@ export const InputsContainer = styled.div`
 
 export const PaymentInput = styled(Input)`
     flex: 1;
+    min-width: 160px;
 `;
 
 export const CodeInput = styled(Input)`
